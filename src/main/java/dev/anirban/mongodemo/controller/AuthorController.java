@@ -6,6 +6,7 @@ import dev.anirban.mongodemo.service.AuthorService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -16,7 +17,15 @@ public class AuthorController {
 
     @PostMapping("/authors")
     public Author createAuthor(@RequestBody Author author) {
-        return service.createAuthor(author);
+
+        Author newAuthor = Author
+                .builder()
+                .age(author.getAge())
+                .name(author.getName())
+                .books(new ArrayList<>())
+                .build();
+
+        return service.createAuthor(newAuthor);
     }
 
     @GetMapping("/authors")

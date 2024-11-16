@@ -1,6 +1,7 @@
 package dev.anirban.mongodemo.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
@@ -23,6 +24,7 @@ public class Author {
     private String name;
     private Integer age;
 
+    @JsonIgnore
     @DBRef
     private List<Book> books;
 
