@@ -41,6 +41,10 @@ public class BookService {
                 .orElseThrow(() -> new RuntimeException("Book not found !!"));
     }
 
+    public List<Book> findByAuthorId(String id) {
+        return bookRepo.findByAuthor_Id(id);
+    }
+
     public void deleteBook(String id) {
         if (!bookRepo.existsById(id))
             throw new RuntimeException("Book not found !!");

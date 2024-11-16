@@ -28,6 +28,11 @@ public class BookController {
         return service.findBookById(id);
     }
 
+    @GetMapping("/books/author/{id}")
+    public List<Book> findByAuthorId(@PathVariable String id){
+        return service.findByAuthorId(id);
+    }
+
     @DeleteMapping("/books/{id}")
     public void deleteBook(@PathVariable String id) {
         service.deleteBook(id);
